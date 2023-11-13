@@ -2,18 +2,16 @@
 version: "2.1"
 services:
   netbootxyz:
-    image: lscr.io/linuxserver/netbootxyz:latest
+    image: ghcr.io/netbootxyz/netbootxyz
     container_name: netbootxyz
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Warsaw
-      - MENU_VERSION=1.9.9 #optional
-      - PORT_RANGE=30000:30010 #optional
-      - SUBFOLDER=/ #optional
+      - MENU_VERSION=2.0.73 # optional, sets menus version, unset uses latest
     volumes:
-      - /pt/tftp/config:/config
-      - /opt/tftp/assets:/assets #optional
+      - ./config:/config # optional
+      - ./assets:/assets # optional
     ports:
       - 3000:3000
       - 69:69/udp
